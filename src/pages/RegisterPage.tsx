@@ -8,7 +8,7 @@ function RegisterPage() {
   const [formData, setFormData] = useState({ username: '', email: '', password: '', confirmPassword: '' });
   const [errors, setErrors] = useState<{ username?: string; email?: string; password?: string; confirmPassword?: string }>({});
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
@@ -62,11 +62,10 @@ function RegisterPage() {
   };
 
   return (
-    <body style={{ margin: 0, padding: 0 }}>
     <div style={{
       width: "100vw",
       height: "100vh",
-      backgroundImage: "url('/src/assets/images/Foto-floresta-azul.jpg')",
+      backgroundImage: "url('/src/assets/images/dados-background.jpg')",
       backgroundSize: "cover",
       backgroundPosition: "center",
       display: "flex",
@@ -77,10 +76,10 @@ function RegisterPage() {
       <div style={{
         width: 400,
         padding: '40px',
-        backgroundColor: 'rgba(15, 23, 42, 0.8)',
+        backgroundColor: '#251931',
         backdropFilter: 'blur(20px)',
-        border: '1px solid rgba(148, 163, 184, 0.2)',
-        borderRadius: '8px'
+        border: '2px solid #422B59',
+        borderRadius: '8px',
       }}>
         <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '16px' }}>
           <img src="/src/assets/images/LOGO.png" alt="BitDragon Logo" style={{
@@ -92,11 +91,10 @@ function RegisterPage() {
 
         <h1 style={{
           textAlign: 'center',
-          marginBottom: '25px',
           color: '#fff',
           fontWeight: 'bold',
           fontSize: '32px',
-          margin: '0 0 8px 0'
+          margin: '0 0 25px 0'
         }}>
           Criar Conta
         </h1>
@@ -157,8 +155,8 @@ function RegisterPage() {
                 height: '45px',
                 padding: '10px 12px',
                 color: '#e2e8f0',
-                backgroundColor: 'rgba(30, 41, 59, 0.5)',
-                border: '1px solid rgba(148, 163, 184, 0.3)',
+                backgroundColor: '#3f1f5eff',
+                border: '1px solid #664488ff',
                 borderRadius: '10px',
                 fontSize: '14px',
                 boxSizing: 'border-box',
@@ -194,8 +192,8 @@ function RegisterPage() {
                 height: '45px',
                 padding: '10px 12px',
                 color: '#e2e8f0',
-                backgroundColor: 'rgba(30, 41, 59, 0.5)',
-                border: '1px solid rgba(148, 163, 184, 0.3)',
+                backgroundColor: '#3f1f5eff',
+                border: '1px solid #664488ff',
                 borderRadius: '10px',
                 fontSize: '14px',
                 boxSizing: 'border-box',
@@ -211,86 +209,88 @@ function RegisterPage() {
             )}
           </div>
 
-          <div style={{ marginBottom: '16px' }}>
-            <label style={{
-              display: 'block',
-              marginBottom: '8px',
-              color: '#cbd5e1',
-              fontSize: '14px'
-            }}>
-              Senha
-            </label>
-            <input
-              type="password"
-              name="password"
-              placeholder='Digite sua senha'
-              value={formData.password}
-              onChange={handleChange}
-              style={{
-                width: '100%',
-                height: '45px',
-                padding: '10px 12px',
-                color: '#e2e8f0',
-                backgroundColor: 'rgba(30, 41, 59, 0.5)',
-                border: '1px solid rgba(148, 163, 184, 0.3)',
-                borderRadius: '10px',
-                fontSize: '14px',
-                boxSizing: 'border-box',
-                transition: 'border-color 0.2s'
-              }}
-              onFocus={(e) => e.target.style.borderColor = 'rgba(148, 163, 184, 0.5)'}
-              onBlur={(e) => e.target.style.borderColor = 'rgba(148, 163, 184, 0.3)'}
-            />
-            {errors.password && (
-              <span style={{ color: '#fca5a5', fontSize: '12px', marginTop: '4px', display: 'block' }}>
-                {errors.password as string}
-              </span>
-            )}
-          </div>
+            <div style={{ display: 'flex', gap: '16px' }}>
+                <div style={{ marginBottom: '16px' }}>
+                    <label style={{
+                    display: 'block',
+                    marginBottom: '8px',
+                    color: '#cbd5e1',
+                    fontSize: '14px'
+                    }}>
+                    Senha
+                    </label>
+                    <input
+                    type="password"
+                    name="password"
+                    placeholder='Digite sua senha'
+                    value={formData.password}
+                    onChange={handleChange}
+                    style={{
+                        width: '100%',
+                        height: '45px',
+                        padding: '10px 12px',
+                        color: '#e2e8f0',
+                        backgroundColor: '#3f1f5eff',
+                        border: '1px solid #664488ff',
+                        borderRadius: '10px',
+                        fontSize: '14px',
+                        boxSizing: 'border-box',
+                        transition: 'border-color 0.2s'
+                    }}
+                    onFocus={(e) => e.target.style.borderColor = 'rgba(148, 163, 184, 0.5)'}
+                    onBlur={(e) => e.target.style.borderColor = 'rgba(148, 163, 184, 0.3)'}
+                    />
+                    {errors.password && (
+                    <span style={{ color: '#fca5a5', fontSize: '12px', marginTop: '4px', display: 'block' }}>
+                        {errors.password as string}
+                    </span>
+                    )}
+                </div>
 
-          <div style={{ marginBottom: '16px' }}>
-            <label style={{
-              display: 'block',
-              marginBottom: '8px',
-              color: '#cbd5e1',
-              fontSize: '14px'
-            }}>
-              Confirmar Senha
-            </label>
-            <input
-              type="password"
-              name="confirmPassword"
-              placeholder='Confirme sua senha'
-              value={formData.confirmPassword}
-              onChange={handleChange}
-              style={{
-                width: '100%',
-                height: '45px',
-                padding: '10px 12px',
-                color: '#e2e8f0',
-                backgroundColor: 'rgba(30, 41, 59, 0.5)',
-                border: '1px solid rgba(148, 163, 184, 0.3)',
-                borderRadius: '10px',
-                fontSize: '14px',
-                boxSizing: 'border-box',
-                transition: 'border-color 0.2s'
-              }}
-              onFocus={(e) => e.target.style.borderColor = 'rgba(148, 163, 184, 0.5)'}
-              onBlur={(e) => e.target.style.borderColor = 'rgba(148, 163, 184, 0.3)'}
-            />
-            {errors.confirmPassword && (
-              <span style={{ color: '#fca5a5', fontSize: '12px', marginTop: '4px', display: 'block' }}>
-                {errors.confirmPassword as string}
-              </span>
-            )}
-          </div>
+                <div style={{ marginBottom: '16px' }}>
+                    <label style={{
+                    display: 'block',
+                    marginBottom: '8px',
+                    color: '#cbd5e1',
+                    fontSize: '14px'
+                    }}>
+                    Confirmar Senha
+                    </label>
+                    <input
+                    type="password"
+                    name="confirmPassword"
+                    placeholder='Confirme sua senha'
+                    value={formData.confirmPassword}
+                    onChange={handleChange}
+                    style={{
+                        width: '100%',
+                        height: '45px',
+                        padding: '10px 12px',
+                        color: '#e2e8f0',
+                        backgroundColor: '#3f1f5eff',
+                        border: '1px solid #664488ff',
+                        borderRadius: '10px',
+                        fontSize: '14px',
+                        boxSizing: 'border-box',
+                        transition: 'border-color 0.2s'
+                    }}
+                    onFocus={(e) => e.target.style.borderColor = 'rgba(148, 163, 184, 0.5)'}
+                    onBlur={(e) => e.target.style.borderColor = 'rgba(148, 163, 184, 0.3)'}
+                    />
+                    {errors.confirmPassword && (
+                    <span style={{ color: '#fca5a5', fontSize: '12px', marginTop: '4px', display: 'block' }}>
+                        {errors.confirmPassword as string}
+                    </span>
+                    )}
+                </div>
+            </div>
 
           <button
             type="submit"
             disabled={loading}
             style={{
               width: '100%',
-              backgroundColor: loading ? '#1e40af' : '#3b82f6',
+              backgroundColor: loading ? '#a855f7' : '#a855f7',
               color: '#fff',
               padding: '10px',
               marginTop: '16px',
@@ -303,8 +303,8 @@ function RegisterPage() {
               opacity: loading ? 0.6 : 1,
               transition: 'background-color 0.2s'
             }}
-            onMouseEnter={(e) => !loading && ((e.currentTarget as HTMLButtonElement).style.backgroundColor = '#2563eb')}
-            onMouseLeave={(e) => !loading && ((e.currentTarget as HTMLButtonElement).style.backgroundColor = '#3b82f6')}
+            onMouseEnter={(e) => !loading && ((e.currentTarget as HTMLButtonElement).style.backgroundColor = '#d0abf3ff')}
+            onMouseLeave={(e) => !loading && ((e.currentTarget as HTMLButtonElement).style.backgroundColor = '#a855f7')}
           >
             {loading ? '⏳ Criando conta...' : 'Criar Conta'}
           </button>
@@ -313,7 +313,7 @@ function RegisterPage() {
         <p style={{ textAlign: 'center', color: '#cbd5e1', fontSize: '14px', margin: '0' }}>
           Já tem uma conta?{' '}
           <a href="/login" style={{
-            color: '#3b82f6',
+            color: '#a855f7',
             textDecoration: 'none',
             fontWeight: 'bold'
           }}
@@ -324,7 +324,6 @@ function RegisterPage() {
         </p>
       </div>
     </div>
-    </body>
   );
 }
 

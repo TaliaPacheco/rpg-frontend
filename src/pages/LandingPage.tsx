@@ -1,6 +1,6 @@
 function LandingPage() {
   return (
-    <body style={{ margin: 0, padding: 0 }}>
+    
     <div style={{
       background: 'linear-gradient(90deg, #05000cff 0%,#0a0f1b 100%)',
       color: '#fff',
@@ -126,7 +126,7 @@ function LandingPage() {
           maxWidth: '100%',
           color: '#fff'
         }}>
-          Forje Suas <span style={{ color: '#9333ea' }}>Lendas</span> Juntos
+          Forje suas <span style={{ color: '#9333ea' }}>lendas</span> juntos
         </h1>
         <p style={{
           fontSize: '18px',
@@ -157,9 +157,9 @@ function LandingPage() {
             (e.currentTarget as HTMLAnchorElement).style.backgroundColor = '#a855f7';
             (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(0)';
           }}>
-            Comece Sua Aventura →
+            Comece sua aventura 
           </a>
-          <a href="#" style={{
+          <a href="/Register" style={{
             backgroundColor: 'transparent',
             color: '#cbd5e1',
             padding: '14px 40px',
@@ -458,7 +458,6 @@ function LandingPage() {
         </div>
       </footer>
     </div>
-    </body>
   );
 }
 

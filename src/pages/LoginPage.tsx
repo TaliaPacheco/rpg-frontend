@@ -48,7 +48,6 @@ function LoginPage() {
   };
 
   return (
-    <body style={{ margin: 0, padding: 0 }}>
     <div style={{
       width: "100vw",
       height: "100vh",
@@ -235,7 +234,6 @@ function LoginPage() {
         </p>
       </div>
     </div>
-    </body>
   );
 }
 
