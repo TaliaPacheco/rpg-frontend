@@ -1,16 +1,58 @@
-# React + Vite
+# BitDragon - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Descrição
 
-Currently, two official plugins are available:
+Frontend da aplicação **BitDragon**, um gerenciador de campanhas de RPG com interface moderna e intuitiva.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Status
 
-## React Compiler
+⚠️ **Projeto em Andamento**
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Este projeto está em fase de desenvolvimento. A interface e funcionalidades podem sofrer alterações.
 
-## Expanding the ESLint configuration
+## Tecnologias
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **React** com TypeScript
+- **Vite** para build rápido
+- **CSS-in-JS** para estilização
+- **Axios** para requisições HTTP
+- **React Router** para navegação
+
+## Estrutura do Projeto
+
+```
+Front/
+├── src/
+│   ├── pages/            # Páginas da aplicação
+│   ├── components/       # Componentes reutilizáveis
+│   ├── services/         # Serviços (API)
+│   ├── assets/           # Imagens e ícones
+│   ├── App.jsx           # Componente raiz
+│   └── main.jsx          # Ponto de entrada
+├── public/               # Arquivos estáticos
+└── package.json
+```
+
+## Funcionalidades Principais
+
+- ✅ Dashboard de campanhas
+- ✅ Edição de capa de campanha
+- ✅ Login e autenticação
+- 🔄 Gerenciamento de personagens
+- 🔄 Sistema de quests
+- 🔄 Journal/Notas
+- 🔄 Mapa de localizações
+
+## Como Usar
+
+1. Faça login com suas credenciais
+2. Crie ou selecione uma campanha
+3. Personalize sua campanha (capa, sinopse, etc)
+4. Gerencie seus personagens, quests e notas
+
+
+**Desenvolvido com <3> e muita dedicação**
+
+---
+
+⚠️ **Aviso**: Este projeto está em desenvolvimento ativo. Algumas funcionalidades podem não estar completas ou sofrer mudanças.
