@@ -1,13 +1,16 @@
 import { useState } from 'react';
 import api from '../services/api';
+import { useNavigate } from 'react-router-dom';
 
 function LoginPage() {
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
@@ -24,7 +27,7 @@ function LoginPage() {
     return newErrors;
   };
 
-  const onSubmit = async (e) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const validationErrors = validate();
     
@@ -35,13 +38,25 @@ function LoginPage() {
 
     setLoading(true);
     setError('');
+    setSuccess('');
 
     try {
-      const response = await api.post('/login', formData);
+      const response = await api.post('/users/login', {
+        email: formData.email,
+        password: formData.password
+      });
+
       localStorage.setItem('token', response.data.token);
-      window.location.href = '/';
-    } catch (err) {
-      setError(err.response?.data?.message || 'Erro ao fazer login');
+      
+      localStorage.setItem('user', JSON.stringify(response.data.user));
+
+      setSuccess('Login realizado com sucesso! Redirecionando...');
+      
+      setTimeout(() => {
+        navigate('/dashboard');
+      }, 1500);
+    } catch (err: any) {
+      setError(err.response?.data?.message || 'Erro ao fazer login. Verifique suas credenciais.');
     } finally {
       setLoading(false);
     }
@@ -105,6 +120,19 @@ function LoginPage() {
             color: '#fca5a5'
           }}>
             {error}
+          </div>
+        )}
+
+        {success && (
+          <div style={{
+            marginBottom: '16px',
+            padding: '12px',
+            backgroundColor: 'rgba(34, 197, 94, 0.1)',
+            border: '1px solid rgba(34, 197, 94, 0.5)',
+            borderRadius: '4px',
+            color: '#86efac'
+          }}>
+            {success}
           </div>
         )}
 

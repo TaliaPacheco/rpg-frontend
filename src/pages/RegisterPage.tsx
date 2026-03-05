@@ -34,7 +34,7 @@ function RegisterPage() {
   const onSubmit = async (e) => {
     e.preventDefault();
     const validationErrors = validate();
-    
+
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       return;
@@ -45,15 +45,15 @@ function RegisterPage() {
     setSuccess('');
 
     try {
-      await api.post('/register', {
-        username: formData.username,
+      await api.post('/users', {
+        name: formData.username,
         email: formData.email,
         password: formData.password
       });
       setSuccess('Conta criada com sucesso! Redirecionando para login...');
       setTimeout(() => {
         window.location.href = '/login';
-      }, 2000);
+      }, 3000);
     } catch (err) {
       setError(err.response?.data?.message || 'Erro ao criar conta');
     } finally {
@@ -78,7 +78,7 @@ function RegisterPage() {
         padding: '40px',
         backgroundColor: '#251931',
         backdropFilter: 'blur(20px)',
-        border: '2px solid #422B59',
+        border: '1px solid #422B59',
         borderRadius: '8px',
       }}>
         <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '16px' }}>
@@ -209,81 +209,81 @@ function RegisterPage() {
             )}
           </div>
 
-            <div style={{ display: 'flex', gap: '16px' }}>
-                <div style={{ marginBottom: '16px' }}>
-                    <label style={{
-                    display: 'block',
-                    marginBottom: '8px',
-                    color: '#cbd5e1',
-                    fontSize: '14px'
-                    }}>
-                    Senha
-                    </label>
-                    <input
-                    type="password"
-                    name="password"
-                    placeholder='Digite sua senha'
-                    value={formData.password}
-                    onChange={handleChange}
-                    style={{
-                        width: '100%',
-                        height: '45px',
-                        padding: '10px 12px',
-                        color: '#e2e8f0',
-                        backgroundColor: '#3f1f5eff',
-                        border: '1px solid #664488ff',
-                        borderRadius: '10px',
-                        fontSize: '14px',
-                        boxSizing: 'border-box',
-                        transition: 'border-color 0.2s'
-                    }}
-                    onFocus={(e) => e.target.style.borderColor = 'rgba(148, 163, 184, 0.5)'}
-                    onBlur={(e) => e.target.style.borderColor = 'rgba(148, 163, 184, 0.3)'}
-                    />
-                    {errors.password && (
-                    <span style={{ color: '#fca5a5', fontSize: '12px', marginTop: '4px', display: 'block' }}>
-                        {errors.password as string}
-                    </span>
-                    )}
-                </div>
-
-                <div style={{ marginBottom: '16px' }}>
-                    <label style={{
-                    display: 'block',
-                    marginBottom: '8px',
-                    color: '#cbd5e1',
-                    fontSize: '14px'
-                    }}>
-                    Confirmar Senha
-                    </label>
-                    <input
-                    type="password"
-                    name="confirmPassword"
-                    placeholder='Confirme sua senha'
-                    value={formData.confirmPassword}
-                    onChange={handleChange}
-                    style={{
-                        width: '100%',
-                        height: '45px',
-                        padding: '10px 12px',
-                        color: '#e2e8f0',
-                        backgroundColor: '#3f1f5eff',
-                        border: '1px solid #664488ff',
-                        borderRadius: '10px',
-                        fontSize: '14px',
-                        boxSizing: 'border-box',
-                        transition: 'border-color 0.2s'
-                    }}
-                    onFocus={(e) => e.target.style.borderColor = 'rgba(148, 163, 184, 0.5)'}
-                    onBlur={(e) => e.target.style.borderColor = 'rgba(148, 163, 184, 0.3)'}
-                    />
-                    {errors.confirmPassword && (
-                    <span style={{ color: '#fca5a5', fontSize: '12px', marginTop: '4px', display: 'block' }}>
-                        {errors.confirmPassword as string}
-                    </span>
-                    )}
-                </div>
+          <div style={{ display: 'flex', gap: '16px' }}>
+            <div style={{ marginBottom: '16px' }}>
+              <label style={{
+                display: 'block',
+                marginBottom: '8px',
+                color: '#cbd5e1',
+                fontSize: '14px'
+              }}>
+                Senha
+              </label>
+              <input
+                type="password"
+                name="password"
+                placeholder='Digite sua senha'
+                value={formData.password}
+                onChange={handleChange}
+                style={{
+                  width: '100%',
+                  height: '45px',
+                  padding: '10px 12px',
+                  color: '#e2e8f0',
+                  backgroundColor: '#3f1f5eff',
+                  border: '1px solid #664488ff',
+                  borderRadius: '10px',
+                  fontSize: '14px',
+                  boxSizing: 'border-box',
+                  transition: 'border-color 0.2s'
+                }}
+                onFocus={(e) => e.target.style.borderColor = 'rgba(148, 163, 184, 0.5)'}
+                onBlur={(e) => e.target.style.borderColor = 'rgba(148, 163, 184, 0.3)'}
+              />
+              {errors.password && (
+                <span style={{ color: '#fca5a5', fontSize: '12px', marginTop: '4px', display: 'block' }}>
+                  {errors.password as string}
+                </span>
+              )}
             </div>
+
+            <div style={{ marginBottom: '16px' }}>
+              <label style={{
+                display: 'block',
+                marginBottom: '8px',
+                color: '#cbd5e1',
+                fontSize: '14px'
+              }}>
+                Confirmar Senha
+              </label>
+              <input
+                type="password"
+                name="confirmPassword"
+                placeholder='Confirme sua senha'
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                style={{
+                  width: '100%',
+                  height: '45px',
+                  padding: '10px 12px',
+                  color: '#e2e8f0',
+                  backgroundColor: '#3f1f5eff',
+                  border: '1px solid #664488ff',
+                  borderRadius: '10px',
+                  fontSize: '14px',
+                  boxSizing: 'border-box',
+                  transition: 'border-color 0.2s'
+                }}
+                onFocus={(e) => e.target.style.borderColor = 'rgba(148, 163, 184, 0.5)'}
+                onBlur={(e) => e.target.style.borderColor = 'rgba(148, 163, 184, 0.3)'}
+              />
+              {errors.confirmPassword && (
+                <span style={{ color: '#fca5a5', fontSize: '12px', marginTop: '4px', display: 'block' }}>
+                  {errors.confirmPassword as string}
+                </span>
+              )}
+            </div>
+          </div>
 
           <button
             type="submit"
@@ -317,8 +317,8 @@ function RegisterPage() {
             textDecoration: 'none',
             fontWeight: 'bold'
           }}
-          onMouseEnter={(e) => (e.currentTarget as HTMLAnchorElement).style.textDecoration = 'underline'}
-          onMouseLeave={(e) => (e.currentTarget as HTMLAnchorElement).style.textDecoration = 'none'}>
+            onMouseEnter={(e) => (e.currentTarget as HTMLAnchorElement).style.textDecoration = 'underline'}
+            onMouseLeave={(e) => (e.currentTarget as HTMLAnchorElement).style.textDecoration = 'none'}>
             Fazer login
           </a>
         </p>
